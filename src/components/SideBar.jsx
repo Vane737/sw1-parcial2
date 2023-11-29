@@ -1,4 +1,4 @@
-import { HomeIcon, SunIcon, ViewColumnsIcon, CameraIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, SunIcon, CalendarDaysIcon, CameraIcon } from '@heroicons/react/24/solid';
 import { NavLink } from 'react-router-dom';
 
 
@@ -38,8 +38,16 @@ import { NavLink } from 'react-router-dom';
             <NavLink to="/eventos" 
             className={({ isActive }) => (isActive?  "p-3 flex items-center rounded-md bg-primary text-white bg-opacity-100" : "p-3 flex items-center rounded-md hover:bg-primary_light bg-opacity-100")}
             >
-              <ViewColumnsIcon className="h-5 w-5 mr-2"/>
+              <CalendarDaysIcon className="h-5 w-5 mr-2"/>
               Gestion de Eventos
+            </NavLink>
+          </li>
+          <li className="my-1 mx-2">
+            <NavLink to="/fotografias" 
+            className={({ isActive }) => (isActive?  "p-3 flex items-center rounded-md bg-primary text-white bg-opacity-100" : "p-3 flex items-center rounded-md hover:bg-primary_light bg-opacity-100")}
+            >
+              <CameraIcon className="h-5 w-5 mr-2"/>
+              Gestion de Fotografias
             </NavLink>
           </li>
         </ul>
