@@ -6,7 +6,7 @@ import CardIcon from "../components/CardIcon";
 import Card from "../components/Card";
 import defaultImage from '../assets/default.jpg';
 
-export const Home = () => {
+export const HomePage = () => {
   const navigate = useNavigate();
   const listData = [
     {
@@ -67,6 +67,6 @@ export const Home = () => {
 
       </div>
     </div>
-    )
+    );
   }
   
