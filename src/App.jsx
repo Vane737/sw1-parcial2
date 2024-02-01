@@ -2,7 +2,7 @@
 
 import './App.css'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
-import { HomeIcon, CalendarDaysIcon, UserGroupIcon } from '@heroicons/react/24/solid';
+import { HomeIcon, CalendarDaysIcon } from '@heroicons/react/24/solid';
 
 import SideBar from './components/SideBar';
 import NavBar from './components/NavBar';
@@ -10,7 +10,7 @@ import { Login, RegisterUser} from './pages/auth/index';
 import { Events, CreateEvent, SendInvitation, ReadEvent, Guests, Photographers } from './pages/eventos/index';
 import { Photography } from './pages/photography/Photography';
 import { HomePage } from './pages/HomePage';
-import NavLoggin from './components/Navloggin';
+import {NavLoggin} from './components/NavLoggin';
 import { Photographs } from './pages/photography/Photographs';
 import Profile from './pages/photographer/Profile';
 import { EventsPhotographer } from './pages/photography/EventsPhotographer';
@@ -18,7 +18,6 @@ import { EventsPhotographer } from './pages/photography/EventsPhotographer';
 // import ReadEvent from './pages/eventos/ReadEvent';
 
 const App = () => {
-  let useranouth =  false;
   const idUser = localStorage.getItem('idUser') ?? 1 ;
   const navLinksOrganizer = [
     { to: "/organizer/photographs", icon: <HomeIcon />, text: "Dashboard" },

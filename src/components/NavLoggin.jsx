@@ -11,7 +11,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function NavLoggin() {
+export const  NavLoggin = () =>  {
 
     const navigate = useNavigate();
   const handleClickCreate = ()=>{
@@ -24,7 +24,7 @@ export default function NavLoggin() {
     return (
     <div>
       <Disclosure as="nav" className="bg-primary pt-2 h-20 container">
-        {({ open }) => (
+   
           <>
             <div className="mx-auto sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
@@ -121,7 +121,7 @@ export default function NavLoggin() {
               </div>
             </Disclosure.Panel> */}
           </>
-        )}
+        
       </Disclosure>
       <Outlet />
     </div>
