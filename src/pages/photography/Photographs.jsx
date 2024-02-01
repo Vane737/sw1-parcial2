@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-import CardIcon from "../components/CardIcon";
-import Card from "../components/Card";
-import defaultImage from '../assets/default.jpg';
+// import CardIcon from "../components/CardIcon";
+import Card from "../../components/Card";
+import defaultImage from '../../assets/default.jpg';
 
-export const HomePage = () => {
+export const Photographs = () => {
   const navigate = useNavigate();
   const listData = [
     {
@@ -42,12 +42,12 @@ export const HomePage = () => {
 
   ];
 
-  const handleClickCreate = ()=>{
-    navigate(`organizadores/eventos/create`);
-  }
+//   const handleClickCreate = ()=>{
+//     navigate(`organizadores/eventos/create`);
+//   }
 
   const handleCardClick = ( id ) => {
-    navigate(`/fotografias/view/${id}`);
+    navigate(`/organizer/photography/${id}`);
   }
     return (
       <div className="w-full p-5 container">
@@ -57,7 +57,7 @@ export const HomePage = () => {
           </div>
           <div className='mx-16 grid grid-cols-4 gap-4 pt-4'>
 
-                <CardIcon icon={<PlusIcon className='text-dark'/>} title="Añadir"  onClick={handleClickCreate} />
+                {/* <CardIcon icon={<PlusIcon className='text-dark'/>} title="Añadir"  onClick={handleClickCreate} /> */}
                 {/* Se devbe iterar la card que esta abajo  */}
                 {listData.map((photography) => (
                 <Card key={photography.id} imageSrc={photography.image} title="Alonso Edgar Variloche" description="Autor" price={`${photography.price} Bs`} onClick={handleCardClick} />

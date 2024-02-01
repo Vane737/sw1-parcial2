@@ -1,33 +1,60 @@
+import { useNavigate, useParams } from "react-router-dom";
 import eventsDefault from "../../assets/event.jpg";
+import { useEffect, useState } from "react";
+import api from "../../api/gatewayApi";
 
 export const ReadEvent = () => {
-  const event = {
-    id: "3",
-    name: "Reunión de trabajo",
-    description: "Reunión mensual del equipo",
-    date: "2023-10-05",
-    time: "10:00:00 am",
-    address: "Oficina principal, Torre Empresarial",
-    organizerId: 3,
-    people: [
-      {
-        email: "gerente@empresa.com",
-        cant: 1,
-      },
-      {
-        email: "colega1@empresa.com",
-        cant: 2,
-      },
-    ],
-  };
 
+  const navigate = useNavigate();
+  const { idOrg, idEvent } = useParams();
+  const [event, setEvent] = useState({});
+
+  // const event = {
+  //   id: "3",
+  //   name: "Reunión de trabajo",
+  //   description: "Reunión mensual del equipo",
+  //   date: "2023-10-05",
+  //   time: "10:00:00 am",
+  //   address: "Oficina principal, Torre Empresarial",
+  //   organizerId: 3,
+  //   people: [
+  //     {
+  //       email: "gerente@empresa.com",
+  //       cant: 1,
+  //     },
+  //     {
+  //       email: "colega1@empresa.com",
+  //       cant: 2,
+  //     },
+  //   ],
+  // };
+
+
+  useEffect(() => {
+    const fetchRoles = async () => {
+      try {
+        const response = await api.get(`organizer/${idEvent}/event`);
+        if (response.status === 200) {
+          setEvent(response.data);
+        } else {
+          console.error('Error al obtener roles:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error al obtener roles:', error);
+      }
+    };
+
+    fetchRoles();
+  }, []);
   const handleViewGuests = () => {
     // Lógica para redirigir o manejar la vista de invitados
+    navigate(`/organizer/${idOrg}/event/${idEvent}/guests`)
     console.log("Mostrar invitados");
   };
-
+  
   const handleViewPhotographers = () => {
     // Lógica para redirigir o manejar la vista de fotógrafos
+    navigate(`/organizer/${idOrg}/event/${idEvent}/photographers`)
     console.log("Mostrar fotógrafos");
   };
 
@@ -61,6 +88,7 @@ export const ReadEvent = () => {
         {/* <div className="">
         </div> */}
       </div>
+    
     </div>
   );
 };

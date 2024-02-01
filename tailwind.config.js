@@ -5,12 +5,15 @@ export default {
     extend: {
       colors: {
         primary: '#2CB3A2',
-        secondary: '#F28648',
-        secondary_light: '#F6D7C5',
+        secondary: '#FFD166',
+        secondary_light: '#FFECC0',
         primary_light: '#B1E2DC',
         dark: '#555555',
         
         cancelado: '#EC4343',
+        confirmo: '#F1C308',
+        aceptado: '#47B971',
+        table: '#FFFFF0'
       },
     },
   },
