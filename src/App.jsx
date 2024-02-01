@@ -9,7 +9,7 @@ import NavBar from './components/NavBar';
 import { Login, RegisterUser} from './pages/auth/index';
 import { Events, CreateEvent, SendInvitation, ReadEvent, Guests, Photographers } from './pages/eventos/index';
 import { Photography } from './pages/photography/Photography';
-import { HomePage } from './pages/HomePage';
+import { HomePage, Welcome } from './pages/Welcome';
 import {NavLoggin} from './components/NavLoggin';
 import { Photographs } from './pages/photography/Photographs';
 import Profile from './pages/photographer/Profile';
@@ -19,6 +19,7 @@ import { EventsPhotographer } from './pages/photography/EventsPhotographer';
 
 const App = () => {
   const idUser = localStorage.getItem('idUser') ?? 1 ;
+  console.log(idUser);
   const navLinksOrganizer = [
     { to: "/organizer/photographs", icon: <HomeIcon />, text: "Dashboard" },
     { to: `/organizer/${idUser}/events`, icon: <CalendarDaysIcon />, text: "Gestion de Eventos" },
@@ -51,7 +52,7 @@ const App = () => {
       <BrowserRouter> {/* Proveedor de la libreria */}
         <Routes>       {/* El que contendra las rutas */}
           <Route path="/" element={<NavLoggin /> }> 
-                  <Route index element={ <HomePage />} />
+                  <Route index element={ <Welcome />} />
                   <Route path='login' element={<Login />}/>
                   <Route path='register' element={<RegisterUser />}/>
           </Route>
