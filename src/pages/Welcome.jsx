@@ -8,7 +8,8 @@ import defaultImage from '../assets/default.jpg';
 
 export const Welcome = () => {
   const navigate = useNavigate();
-  localStorage.removeItem('idUser');
+  // const idUser = localStorage.removeItem('idUser');
+  // console.log(idUser);
   const listData = [
     {
       id:"1",

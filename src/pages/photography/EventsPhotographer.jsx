@@ -6,14 +6,15 @@ import api from "../../api/gatewayApi";
 import { CardIconInvitation } from "../../components/CardIconInvitation";
 
 export const EventsPhotographer = () => {
+
   const navigate = useNavigate();
-  const { idPhotographer } = useParams();
+  const idPhoto = localStorage.getItem('idPhoto') ?? 1 ;
   const [listData, setListData] = useState([]);
   const [filter, setFilter] = useState("accepted"); // Opciones: "accepted", "pending"
-
+  console.log(idPhoto);
       const handleAccept = (idEvent) => {
         try {
-            api.post(`photographer/${idPhotographer}/accept-invitation/${idEvent}`);
+            api.post(`photographer/${idPhoto}/accept-invitation/${idEvent}`);
         } catch(error) {
             console.log(error);
         }
@@ -27,10 +28,10 @@ export const EventsPhotographer = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        let endpoint = `/photographer/${idPhotographer}/events`;
+        let endpoint = `/photographer/${idPhoto}/events`;
 
         if (filter === "pending") {
-          endpoint = `event/invitation/photographer/${idPhotographer}`;
+          endpoint = `event/invitation/photographer/${idPhoto}`;
         }
 
         const response = await api.get(endpoint);
@@ -46,7 +47,7 @@ export const EventsPhotographer = () => {
     };
 
     fetchEvents();
-  }, [idPhotographer, filter]);
+  }, [idPhoto, filter]);
 
 //   const handleClickCreate = () => {
 //     navigate(`/organizer/${idOrg}/event/create`);

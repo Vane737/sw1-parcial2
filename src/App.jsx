@@ -9,7 +9,8 @@ import NavBar from './components/NavBar';
 import { Login, RegisterUser} from './pages/auth/index';
 import { Events, CreateEvent, SendInvitation, ReadEvent, Guests, Photographers } from './pages/eventos/index';
 import { Photography } from './pages/photography/Photography';
-import { HomePage, Welcome } from './pages/Welcome';
+import { HomePage } from './pages/HomePage';
+import { Welcome } from './pages/Welcome';
 import {NavLoggin} from './components/NavLoggin';
 import { Photographs } from './pages/photography/Photographs';
 import Profile from './pages/photographer/Profile';
@@ -18,18 +19,20 @@ import { EventsPhotographer } from './pages/photography/EventsPhotographer';
 // import ReadEvent from './pages/eventos/ReadEvent';
 
 const App = () => {
-  const idUser = localStorage.getItem('idUser') ?? 1 ;
-  console.log(idUser);
+  const idPhoto = localStorage.getItem('idPhoto') ?? 1 ;
+  const idOrg = localStorage.getItem('idOrg') ?? 1 ;
+  console.log(idOrg);
+  console.log(idPhoto);
   const navLinksOrganizer = [
     { to: "/organizer/photographs", icon: <HomeIcon />, text: "Dashboard" },
-    { to: `/organizer/${idUser}/events`, icon: <CalendarDaysIcon />, text: "Gestion de Eventos" },
+    { to: `/organizer/events`, icon: <CalendarDaysIcon />, text: "Gestion de Eventos" },
     // { to: "/organizer/guests", icon: <UserGroupIcon />, text: "Mis Invitados" },
     // { to: "/organizer/fotography", icon: <CameraIcon />, text: "Gestion de Fotografias" },
   ];
 
   const navLinksPhotographer = [
     { to: "/photographer", icon: <HomeIcon />, text: "Dashboard" },
-    { to: `/photographer/${idUser}/events`, icon: <CalendarDaysIcon />, text: "Mis Eventos" },
+    { to: `/photographer/events`, icon: <CalendarDaysIcon />, text: "Mis Eventos" },
     // { to: "/photographer/guests", icon: <UserGroupIcon />, text: "Mis Invitados" },
     // { to: "/organizer/fotography", icon: <CameraIcon />, text: "Gestion de Fotografias" },
   ];
@@ -68,7 +71,7 @@ const App = () => {
           </div> 
         }>
             <Route index element={<HomePage /> } />                           {/* Ver Fotografias */}
-            <Route path=':idOrg/events' element={<Events /> } />                     {/* Ver Eventos */}
+            <Route path='events' element={<Events /> } />                     {/* Ver Eventos */}
             <Route path=':idOrg/event/create' element={<CreateEvent /> } />          {/* Crear evento */}
             <Route path='event/edit' element={<HomePage /> } />               {/* Ver editar */}
             <Route path='event/:idEvent' element={<ReadEvent /> } />               {/* Ver evento */}
@@ -93,7 +96,7 @@ const App = () => {
             </div> 
           }>    
             <Route index element={<HomePage /> } />
-            <Route path=':idPhotographer/events' element={<EventsPhotographer /> } />
+            <Route path='events' element={<EventsPhotographer /> } />
             <Route path='photography/profile' element={<HomePage /> } />
             <Route path='photography/upload' element={<HomePage /> } />
             <Route path='photography/:id' element={<HomePage /> } />

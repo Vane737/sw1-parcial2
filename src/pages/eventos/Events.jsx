@@ -7,7 +7,9 @@ import api from "../../api/gatewayApi";
 
 export const Events = () => {
   const navigate = useNavigate();
-  const {idOrg, idEvent} = useParams();
+  const idOrg = localStorage.getItem('idOrg') ?? 1 ;
+  console.log(idOrg);
+
   const [listData, setListData] = useState([]);
 
   useEffect(() => {

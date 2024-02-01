@@ -84,29 +84,42 @@ export const Login = () => {
         case '2':
           apiEndpoint = '/auth/photographer/signin';
           urlRedirect = '/photographer';
-          break;
-        case '3':
-          apiEndpoint = '/auth/organizer/signin';
-          urlRedirect = '/organizer';
+          api.post(apiEndpoint, formdata)
+          .then((response) => {
+            if (response.data.error) {
+              setMessage(response.data.error);
+              setIsOpen(true);
+            } else {
+              const { id, token, email } = response.data;
+              localStorage.setItem('idPhoto', id);
+              setMessage('Usuario logueado exitosamente');
+              setIsOpen(true);
+                navigate(`${urlRedirect}`); // Redirigir al usuario a la página de inicio
+              }
+            })
+            break;
+            case '3':
+              apiEndpoint = '/auth/organizer/signin';
+              urlRedirect = '/organizer';
+              api.post(apiEndpoint, formdata)
+              .then((response) => {
+                if (response.data.error) {
+                  setMessage(response.data.error);
+                  setIsOpen(true);
+                } else {
+                  const { id, token, email } = response.data;
+                  localStorage.setItem('idOrg', id);
+                  setMessage('Usuario logueado exitosamente');
+                  setIsOpen(true);
+                    navigate(`${urlRedirect}`); // Redirigir al usuario a la página de inicio
+                  }
+                })
           break;
         default:
           console.log('No se encontró ningún id que coincida');
           return;
       }
 
-      api.post(apiEndpoint, formdata)
-      .then((response) => {
-        if (response.data.error) {
-          setMessage(response.data.error);
-          setIsOpen(true);
-        } else {
-          const { id, token, email } = response.data;
-          localStorage.setItem('idUser', id);
-          setMessage('Usuario logueado exitosamente');
-          setIsOpen(true);
-            navigate(`${urlRedirect}`); // Redirigir al usuario a la página de inicio
-          }
-        })
         // console.log(response.data);
 
 

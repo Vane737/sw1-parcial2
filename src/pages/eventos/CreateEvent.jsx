@@ -68,7 +68,7 @@ export const CreateEvent = () => {
       console.log(response.status);
       if (response.status === 200 || response.status === 201) {
         console.log("Respuesta del servidor:", response.data);
-        navigate(`/organizer/${idOrg}/events`);
+        navigate(`/organizer/events`);
       } else {
         console.error("Error al registrar el evento");
       }
